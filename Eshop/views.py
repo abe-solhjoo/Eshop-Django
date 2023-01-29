@@ -12,9 +12,9 @@ def header(request, *args, **kwargs):
 # header cod behind
 def footer(request, *args, **kwargs):
     context = {
-
+        'about_us': 'ما در حال توسعه هستیم'
     }
-    return render(request, 'shared/Footer.html')
+    return render(request, 'shared/Footer.html', context)
 
 
 def home_page(request):

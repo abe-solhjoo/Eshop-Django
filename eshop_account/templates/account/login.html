@@ -6,13 +6,9 @@
                 <div class="col-sm-4 col-sm-offset-1">
                     <div class="login-form"><!--login form-->
                         <h2>ورود به حساب کاربـری :</h2>
-                        <form action="#">
-                            <input type="text" placeholder="نام کاربری"/>
-                            <input type="email" placeholder="آدرس ایمیـل"/>
-                            <span>
-								<input type="checkbox" class="checkbox">
-								مرا بخاطـر بسپـار
-							</span>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ login_form }}
                             <span>
 								<a href="forget-password.html">رمـز عبـور خود را فراموش کرده ام</a>
 							</span>

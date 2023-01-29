@@ -1,8 +1,8 @@
 from django.urls import path
 
-from eshop_account.views import login, register
+from eshop_account.views import login_user, register
 
 urlpatterns = [
-    path('login', login),
+    path('login', login_user),
     path('register', register)
 ]

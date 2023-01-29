@@ -1,4 +1,5 @@
 {% load static %}
+{% load render_partial %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +12,9 @@
     {% include 'shared/_HeaderReferences.html' %}
 
 <body>
-{% include 'shared/Header.html' %}
+{% render_partial 'header' %}
 {% block content %}{% endblock %}
-{% include 'shared/Footer.html' %}
+{% render_partial 'footer' %}
 {% include 'shared/_FooterReferences.html' %}
 </body>
 </html>

@@ -1,0 +1,21 @@
+{% extends 'shared/_MainLayout.html' %}
+{% block content %}
+    <div class="container">
+        <section id="form"><!--form-->
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-1">
+                    <div class="signup-form"><!--sign up form-->
+                        <h2>ثبت نام کاربـر جدیـد</h2>
+                        <form action="#">
+                            <input type="text" placeholder="نام کاربـری"/>
+                            <input type="email" placeholder="آدرس ایمیـل"/>
+                            <input type="password" placeholder="رمـز عبـور"/>
+                            <button type="submit" class="btn btn-default">ثبت نام</button>
+                        </form>
+                    </div><!--/sign up form-->
+                </div>
+            </div>
+        </section>
+    </div>
+    <!--/form-->
+{% endblock %}

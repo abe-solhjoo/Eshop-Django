@@ -8,7 +8,7 @@ class LoginForm(forms.Form):
         widget=forms.TextInput(attrs={'placeholder': 'لطفا نام کاربری خود را وارد نمایید'}),
         label='نام کاربری',
         validators=[
-            validators.MaxLengthValidator(limit_value=20,message='تعداد کاراکتر های وارد شده می بایست کمتر از 20 باشد')
+            validators.MaxLengthValidator(limit_value=20, message='تعداد کاراکتر های وارد شده می بایست کمتر از 20 باشد')
         ]
     )
 

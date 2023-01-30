@@ -6,10 +6,24 @@
                 <div class="col-sm-4 col-sm-offset-1">
                     <div class="signup-form"><!--sign up form-->
                         <h2>ثبت نام کاربـر جدیـد</h2>
-                        <form action="#">
-                            <input type="text" placeholder="نام کاربـری"/>
-                            <input type="email" placeholder="آدرس ایمیـل"/>
-                            <input type="password" placeholder="رمـز عبـور"/>
+                        <form method="post">
+                            {% csrf_token %}
+                            <label for="{{ register_form.user_name.id_for_label }}">{{ register_form.user_name.label }}</label>
+                            {{ register_form.user_name }}
+                            {% for error in register_form.user_name.errors %}
+                                <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+
+                            <label for="{{ register_form.email.id_for_label }}">{{ register_form.email.label }}</label>
+                            {{ register_form.email }}
+                            <label for="{{ register_form.password.id_for_label }}">{{ register_form.password.label }}</label>
+                            {{ register_form.password }}
+                            {% for error in register_form.password.errors %}
+                                <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+
+                            <label for="{{ register_form.re_password.id_for_label }}">{{ register_form.re_password.label }}</label>
+                            {{ register_form.re_password }}
                             <button type="submit" class="btn btn-default">ثبت نام</button>
                         </form>
                     </div><!--/sign up form-->

@@ -8,7 +8,17 @@
                         <h2>ورود به حساب کاربـری :</h2>
                         <form method="post">
                             {% csrf_token %}
-                            {{ login_form }}
+                            <label for="{{ login_form.user_name.id_for_label }}">{{ login_form.user_name.label }}</label>
+                            {{ login_form.user_name }}
+                            {% for error in login_form.user_name.errors %}
+                                <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+                            <label for="{{ login_form.password.id_for_label }}">{{ login_form.password.label }}</label>
+                            {{ login_form.password }}
+                            {% for error in login_form.password.errors %}
+                                <P style="color: red">{{ error }}</P>
+                            {% endfor %}
+
                             <span>
 								<a href="forget-password.html">رمـز عبـور خود را فراموش کرده ام</a>
 							</span>

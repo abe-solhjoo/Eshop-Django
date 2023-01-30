@@ -21,9 +21,11 @@ def login_user(request):
         if user is not None:
             login(request, user)
             return redirect('/')
+        else:
+            login_form.add_error('user_name', 'کاربری با مشخصات وارد شده یافت نشد.')
 
     context = {
-        'login_form': LoginForm
+        'login_form': login_form
 
     }
 

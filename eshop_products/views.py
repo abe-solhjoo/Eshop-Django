@@ -15,4 +15,7 @@ def products(request):
 class ProductsList(ListView):
     template_name = 'products/products_list.html'
 
+    # This is for paging
+    paginate_by = 6
+
     queryset = Product.objects.get_active_products()

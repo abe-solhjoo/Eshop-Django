@@ -17,12 +17,23 @@ def upload_image_path(instance, filename):
 
 # Create your models here.
 
+class ProductsManager(models.Manager):
+    def get_active_products(self):
+        return self.get_queryset().filter(active=True)
+
+
 class Product(models.Model):
-    title = models.CharField(max_length=150)
-    description = models.TextField()
-    price = models.IntegerField()
-    image = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
-    active = models.BooleanField(default=False)
+    title = models.CharField(max_length=150, verbose_name='عنوان')
+    description = models.TextField(verbose_name='توضیحات')
+    price = models.IntegerField(verbose_name='قیمت')
+    image = models.ImageField(upload_to=upload_image_path, null=True, blank=True, verbose_name='تصویر')
+    active = models.BooleanField(default=False, verbose_name='فعال')
+
+    objects = ProductsManager()
+
+    class Meta:
+        verbose_name = 'محصول'
+        verbose_name_plural = 'محصولات'
 
     def __str__(self):
         return self.title

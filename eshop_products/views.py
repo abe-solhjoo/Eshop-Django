@@ -19,3 +19,10 @@ class ProductsList(ListView):
     paginate_by = 6
 
     queryset = Product.objects.get_active_products()
+
+
+def product_detail(request):
+    context = {
+
+    }
+    return render(request, 'products/product_detail.html', context)

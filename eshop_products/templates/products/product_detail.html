@@ -9,7 +9,7 @@
                     <div class="product-details"><!--product-details-->
                         <div class="col-sm-5">
                             <div class="view-product">
-                                <img src="{% static 'images/product-details/1.jpg' %}" alt="">
+                                <img src="{{ product.image.url }}" alt="">
                                 <h3>بزرگنمایـی</h3>
                             </div>
                             <div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -48,12 +48,12 @@
                             <div class="product-information"><!--/product-information-->
                                 <img src="{% static 'images/product-details/new.png' %}" class="newarrival" alt="">
                                 <div>
-                                    <h2>کـالای شمـاره 010</h2>
-                                    <p>شناسـه : 0110110</p>
+                                    <h2>{{ product.title }}</h2>
+                                    <p>شناسـه : {{ product.id }}</p>
                                 </div>
                                 <div>
 									<span>
-										<span>قیمت : 2.350.000 ريال</span>
+										<span>قیمت :{{ product.price }} ريال</span>
 									</span>
                                     <span>
 										<label>تعداد :</label>
@@ -83,7 +83,7 @@
 												<img src="{% static 'images/product-details/Soroush.png"' %}>
 											</li>
 										</a>
-										<a href="#">
+										<a href=" #">
 											<li>
 												<label>اینستاگرام</label>
 												<img src="{% static 'images/product-details/Instagram.png' %}">
@@ -306,7 +306,8 @@
 											<input type="email" placeholder="آدرس ایمیـل">
 										</span>
                                         <textarea name=""></textarea>
-                                        <b>رتبـه : </b> <img src="{% static 'images/product-details/rating.png' %}" alt="">
+                                        <b>رتبـه : </b> <img src="{% static 'images/product-details/rating.png' %}"
+                                                             alt="">
                                         <button type="button" class="btn btn-default pull-left">
                                             ارسـال
                                         </button>

@@ -21,6 +21,13 @@ class ProductsManager(models.Manager):
     def get_active_products(self):
         return self.get_queryset().filter(active=True)
 
+    def get_by_id(self, product_id):
+        qs = self.get_queryset().filter(id=product_id)
+        if qs.count() == 1:
+            return qs.first()
+        else:
+            return None
+
 
 class Product(models.Model):
     title = models.CharField(max_length=150, verbose_name='عنوان')

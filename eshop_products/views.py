@@ -35,3 +35,17 @@ def product_detail(request, *args, **kwargs):
         return render(request, 'products/product_detail.html', context)
     raise Http404('محصول مورد نظر یافت نشد')
 
+
+class SearchProductsView(ListView):
+    template_name = 'products/products_list.html'
+    paginate_by = 6
+
+    def get_queryset(self):
+        request = self.request
+        print(request.GET)
+        query = request.GET.get('q')
+
+        if query is not None:
+            return Product.objects.filter(active=True, title__icontains=query)
+
+        return Product.objects.get_active_products()

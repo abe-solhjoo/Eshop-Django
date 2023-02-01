@@ -42,7 +42,6 @@ class SearchProductsView(ListView):
 
     def get_queryset(self):
         request = self.request
-        print(request.GET)
         query = request.GET.get('q')
 
         if query is not None:

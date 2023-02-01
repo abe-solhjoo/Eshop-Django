@@ -1,3 +1,4 @@
+from django.db.models import Q
 import os.path
 
 from django.db import models
@@ -28,6 +29,12 @@ class ProductsManager(models.Manager):
         else:
             return None
 
+    def search(self, query):
+        # lookup is search query in title and description in database
+        lookup = Q(title__icontains=query) | Q(description__icontains=query)
+        # distinct help to search does not show duplicate product
+        return self.get_queryset().filter(lookup, active=True).distinct()
+
 
 class Product(models.Model):
     title = models.CharField(max_length=150, verbose_name='عنوان')
@@ -47,5 +54,3 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return f"/products/{self.id}/{self.title.replace(' ', '-')}"
-
-

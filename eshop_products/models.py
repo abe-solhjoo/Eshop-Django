@@ -31,7 +31,11 @@ class ProductsManager(models.Manager):
 
     def search(self, query):
         # lookup is search query in title and description in database
-        lookup = Q(title__icontains=query) | Q(description__icontains=query)
+        lookup = (
+                Q(title__icontains=query) |
+                Q(description__icontains=query) |
+                Q(tag__title__icontains=query)
+        )
         # distinct help to search does not show duplicate product
         return self.get_queryset().filter(lookup, active=True).distinct()
 

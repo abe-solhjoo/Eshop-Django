@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class EshopProductCategoryConfig(AppConfig):
+class EshopProductsCategoryConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'eshop_product_category'
+    name = 'eshop_products_category'

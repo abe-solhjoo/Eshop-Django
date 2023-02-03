@@ -24,6 +24,9 @@ class ProductsManager(models.Manager):
     def get_active_products(self):
         return self.get_queryset().filter(active=True)
 
+    def get_products_by_category(self, category_name):
+        return self.get_queryset().filter(category__name__iexact=category_name, active=True)
+
     def get_by_id(self, product_id):
         qs = self.get_queryset().filter(id=product_id)
         if qs.count() == 1:

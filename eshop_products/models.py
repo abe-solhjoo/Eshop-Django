@@ -51,7 +51,7 @@ class Product(models.Model):
     price = models.IntegerField(verbose_name='قیمت')
     image = models.ImageField(upload_to=upload_image_path, null=True, blank=True, verbose_name='تصویر')
     active = models.BooleanField(default=False, verbose_name='فعال')
-    category = models.ManyToManyField(ProductCategory,blank=True,verbose_name='دسته بندی ها')
+    category = models.ManyToManyField(ProductCategory, blank=True, verbose_name='دسته بندی ها')
 
     objects = ProductsManager()
 

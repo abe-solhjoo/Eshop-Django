@@ -13,7 +13,7 @@ def header(request, *args, **kwargs):
 # header cod behind
 def footer(request, *args, **kwargs):
     context = {
-        'about_us': 'ما در حال توسعه هستیم'
+        'about_us': "این سایت جهت پروژه دانشگاهی توسط ابراهیم صلح جو ایجاد گردیده است."
     }
     return render(request, 'shared/Footer.html', context)
 

@@ -271,7 +271,7 @@
                                 {% for product_list in related_products %}
                                     <div class="item {{ forloop.first|yesno:'active,' }}">
                                         {% for product in product_list %}
-                                            {% include 'products/product_item_component.html' %}
+                                            {% include 'products/product_item_component.html' with product=product%}
                                         {% endfor %}
 
                                     </div>

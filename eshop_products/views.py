@@ -1,6 +1,8 @@
+import itertools
+
 from django.shortcuts import render
 from django.views.generic import ListView
-from .models import Product
+from .models import Product, ProductGallery
 from django.http import Http404
 from eshop_products_category.models import ProductCategory
 
@@ -38,15 +40,25 @@ class ProductsListByCategory(ListView):
         return Product.objects.get_products_by_category(category_name)
 
 
+def my_grouper(n, iterable):
+    args = [iter(iterable)] * n
+    return ([e for e in t if e is not None] for t in itertools.zip_longest(*args))
+
+
 def product_detail(request, *args, **kwargs):
     product_id = kwargs['productId']
 
     product = Product.objects.get_by_id(product_id)
+
     if product is None:
         raise Http404('محصول مورد نظر یافت نشد')
+
+    galleries = ProductGallery.objects.filter(product_id=product_id)
+    grouped_galleries = (list(my_grouper(3, galleries)))
     if product.active:
         context = {
-            'product': product
+            'product': product,
+            'galleries': grouped_galleries
         }
         return render(request, 'products/product_detail.html', context)
     raise Http404('محصول مورد نظر یافت نشد')

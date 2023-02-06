@@ -17,21 +17,16 @@
 
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
-                                    <div class="item active">
-                                        <a href=""><img src="{% static 'images/product-details/similar1.jpg' %}" alt=""></a>
-                                        <a href=""><img src="{% static 'images/product-details/similar2.jpg' %}" alt=""></a>
-                                        <a href=""><img src="{% static 'images/product-details/similar3.jpg' %}" alt=""></a>
-                                    </div>
-                                    <div class="item">
-                                        <a href=""><img src="{% static 'images/product-details/similar1.jpg' %}" alt=""></a>
-                                        <a href=""><img src="{% static 'images/product-details/similar2.jpg' %}" alt=""></a>
-                                        <a href=""><img src="{% static 'images/product-details/similar3.jpg' %}" alt=""></a>
-                                    </div>
-                                    <div class="item">
-                                        <a href=""><img src="{% static 'images/product-details/similar1.jpg' %}" alt=""></a>
-                                        <a href=""><img src="{% static 'images/product-details/similar2.jpg' %}" alt=""></a>
-                                        <a href=""><img src="{% static 'images/product-details/similar3.jpg' %}" alt=""></a>
-                                    </div>
+                                    {% for galleries_list in galleries %}
+                                        <div class="item {{ forloop.first|yesno:'active,' }}">
+                                            {% for galleries in galleries_list %}
+
+                                                <a href=""><img src="{{ galleries.image.url }}"
+                                                                alt="{{ galleries.title }}"
+                                                                style="width: 85px;height: 85px"></a>
+                                            {% endfor %}
+                                        </div>
+                                    {% endfor %}
 
                                 </div>
 
@@ -101,14 +96,14 @@
                     <div class="category-tab shop-details-tab"><!--category-tab-->
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs">
-                                <li><a href="#details" data-toggle="tab">جزئیات</a></li>
+                                <li class="active"><a href="#details" data-toggle="tab">جزئیات</a></li>
                                 <li><a href="#companyprofile" data-toggle="tab">درباره سازنده</a></li>
                                 <li><a href="#tag" data-toggle="tab">برچسب</a></li>
-                                <li class="active"><a href="#reviews" data-toggle="tab">نظرات (5)</a></li>
+                                <li><a href="#reviews" data-toggle="tab">نظرات (5)</a></li>
                             </ul>
                         </div>
                         <div class="tab-content">
-                            <div class="tab-pane fade" id="details">
+                            <div class="tab-pane fade active in" id="details">
                                 <div class="col-md-12">
                                     <p>
                                         {{ product.description }}
@@ -234,7 +229,7 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade active in" id="reviews">
+                            <div class="tab-pane fade " id="reviews">
                                 <div class="col-sm-12">
                                     <ul>
                                         <li><a href=""><i class="fa fa-user"></i>مشتـری 1</a></li>

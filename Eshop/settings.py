@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'eshop_products_category',
     'eshop_slider',
     'eshop_contact',
+    'eshop_settings',
+
 
 
 ]

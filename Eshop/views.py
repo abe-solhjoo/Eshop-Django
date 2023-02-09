@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from eshop_slider.models import Slider
+from eshop_settings.models import SiteSetting
 
 
 # header cod behind
@@ -12,8 +13,10 @@ def header(request, *args, **kwargs):
 
 # header cod behind
 def footer(request, *args, **kwargs):
+    site_setting = SiteSetting.objects.first()
+
     context = {
-        'about_us': "این سایت جهت پروژه دانشگاهی توسط ابراهیم صلح جو ایجاد گردیده است."
+        'setting': site_setting
     }
     return render(request, 'shared/Footer.html', context)
 

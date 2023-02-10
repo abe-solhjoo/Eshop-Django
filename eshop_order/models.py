@@ -9,7 +9,7 @@ from eshop_products.models import Product
 class Order(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     is_paid = models.BooleanField(verbose_name='پرداخت شده')
-    payment_date = models.DateField(blank=True, null=True, verbose_name='تاریخ پرداخت')
+    payment_date = models.DateTimeField(blank=True, null=True, verbose_name='تاریخ پرداخت')
 
     class Meta:
         verbose_name = 'سبد خرید'

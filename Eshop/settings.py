@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'eshop_slider',
     'eshop_contact',
     'eshop_settings',
+    'eshop_order',
 
 
 

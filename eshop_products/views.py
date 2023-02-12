@@ -2,6 +2,8 @@ import itertools
 
 from django.shortcuts import render
 from django.views.generic import ListView
+
+from eshop_order.forms import UserNewOrderForm
 from .models import Product, ProductGallery
 from django.http import Http404
 from eshop_products_category.models import ProductCategory
@@ -48,6 +50,8 @@ def my_grouper(n, iterable):
 def product_detail(request, *args, **kwargs):
     product_id = kwargs['productId']
 
+    new_order_form = UserNewOrderForm(request.POST or None, initial={'product_id': product_id})
+
     product = Product.objects.get_by_id(product_id)
 
     if product is None:
@@ -65,7 +69,8 @@ def product_detail(request, *args, **kwargs):
         context = {
             'product': product,
             'galleries': grouped_galleries,
-            'related_products': grouped_related_products
+            'related_products': grouped_related_products,
+            'new_order_form': new_order_form
         }
         return render(request, 'products/product_detail.html', context)
     raise Http404('محصول مورد نظر یافت نشد')

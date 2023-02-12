@@ -51,14 +51,18 @@
 									<span>
 										<span>قیمت :{{ product.price }} ريال</span>
 									</span>
-                                    <span>
+                                    <form method="post" action="/add-user-order">
+                                        {% csrf_token %}
+                                        <span>
+                                            {{ new_order_form.product_id }}
 										<label>تعداد :</label>
-										<input type="text" value="3" class="search_box">
-										<button type="button" class="btn btn-fefault cart">
+                                            {{ new_order_form.count }}
+										<button type="submit" class="btn btn-fefault cart">
 											<i class="fa fa-shopping-cart"></i>
 											افـزودن به سبـد خریـد
 										</button>
 									</span>
+                                    </form>
                                 </div>
                                 <div>
                                     <p><b>موجـودی :</b> در انبـار موجود می باشد</p>
@@ -271,7 +275,7 @@
                                 {% for product_list in related_products %}
                                     <div class="item {{ forloop.first|yesno:'active,' }}">
                                         {% for product in product_list %}
-                                            {% include 'products/product_item_component.html' with product=product%}
+                                            {% include 'products/product_item_component.html' with product=product %}
                                         {% endfor %}
 
                                     </div>

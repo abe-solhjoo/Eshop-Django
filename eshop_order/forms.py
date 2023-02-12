@@ -2,8 +2,8 @@ from django import forms
 
 
 class UserNewOrderForm(forms.Form):
-    productId = forms.CharField(
-        widget=forms.TextInput()
+    product_id = forms.IntegerField(
+        widget=forms.HiddenInput()
     )
 
     count = forms.IntegerField(

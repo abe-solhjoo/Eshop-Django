@@ -5,8 +5,9 @@ from eshop_settings.models import SiteSetting
 
 # header cod behind
 def header(request, *args, **kwargs):
+    site_setting = SiteSetting.objects.first()
     context = {
-
+        'setting': site_setting
     }
     return render(request, 'shared/Header.html', context)
 
@@ -28,3 +29,12 @@ def home_page(request):
         'sliders': sliders
     }
     return render(request, 'home_page.html', context)
+
+
+def about_page(request):
+    site_setting = SiteSetting.objects.first()
+    context = {
+        'setting': site_setting
+    }
+
+    return render(request, 'about_page.html', context)

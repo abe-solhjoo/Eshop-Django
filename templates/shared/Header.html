@@ -1,6 +1,6 @@
 {% load static %}
 
-<header id="header" ><!--header-->
+<header id="header"><!--header-->
     <div class="header_top"><!--header_top-->
         <div class="container">
             <div class="row">
@@ -40,8 +40,8 @@
 
                 <div class="col-sm-4" style="text-align: left;">
                     <div class="logo">
-                        <a href=" "><img src="{% static 'images/home/logo.png' %}" alt="Logo"
-                                                  style="text-align: center;"/></a>
+                        <a href=" "><img src="{{ setting.logo_image.url }}" alt="Logo"
+                                         style="text-align: center;"/></a>
                     </div>
                 </div>
 
@@ -84,8 +84,8 @@
                     </div>
                     <div class="mainmenu pull-right">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="/" >خـانه</a></li>
-                            <li><a href="/products" >محصولات</a></li>
+                            <li><a href="/">خـانه</a></li>
+                            <li><a href="/products">محصولات</a></li>
 
                             <li class="dropdown"><a href="#">اخبـار<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
@@ -93,7 +93,7 @@
                                     <li><a href="blog-single.html">صفحـه خبـر</a></li>
                                 </ul>
                             </li>
-                            <li><a href="About.html">درباره مـا</a></li>
+                            <li><a href="/about-us">درباره مـا</a></li>
                             <li><a href="/contact-us">تماس با مـا</a></li>
                         </ul>
                     </div>

@@ -18,10 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 from Eshop import settings
-from .views import home_page, header, footer
+from .views import home_page, header, footer, about_page
 
 urlpatterns = [
     path('', home_page),
+    path('about-us', about_page),
     path('', include('eshop_account.urls')),
     path('', include('eshop_products.urls')),
     path('', include('eshop_contact.urls')),

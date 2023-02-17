@@ -33,7 +33,7 @@ def add_user_order(request):
 def user_open_order(request):
     context = {
         'order': None,
-        'detail': None
+        'detail': None,
     }
     order_open = Order.objects.filter(owner_id=request.user.id, is_paid=False).first()
 

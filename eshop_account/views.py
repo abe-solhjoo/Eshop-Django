@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import LoginForm, RegisterForm
 from django.contrib.auth import login, get_user_model, authenticate, logout
@@ -56,3 +57,18 @@ def register(request):
 def log_out(request):
     logout(request)
     return redirect('/login')
+
+
+@login_required(login_url='/login')
+def user_account_main_page(request):
+    return render(request, 'account/user_account_main.html', {})
+
+
+@login_required(login_url='/login')
+def edit_user_profile(request):
+    user_id = request.user.id
+    return render(request, 'account/edit_account.html', {})
+
+
+def user_sidebar(request):
+    return render(request, 'account/user_sidebar.html', {})

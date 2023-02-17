@@ -27,9 +27,6 @@ class OrderDetail(models.Model):
     def get_detail_sum(self):
         return self.count * self.price
 
-    def delete_order_detail(self):
-        pass
-
     class Meta:
         verbose_name = 'جزئیات محصول'
         verbose_name_plural = 'اطلاعات جزئیات محصولات'

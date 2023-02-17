@@ -29,7 +29,9 @@
                                     <a href=""><img src="{{ det.product.image.url }}" alt="" style="width: 110px"></a>
                                 </td>
                                 <td class="cart_description">
-                                    <h5><a href="/products/{{ det.product.id }}/{{ det.product.title }}">{{ det.product.title }}</a></h5>
+                                    <h5>
+                                        <a href="/products/{{ det.product.id }}/{{ det.product.title }}">{{ det.product.title }}</a>
+                                    </h5>
                                     <p>شناسـه : {{ det.product.id }}</p>
                                 </td>
                                 <td class="cart_price">
@@ -46,7 +48,8 @@
                                     <p class="cart_total_price">{{ det.get_detail_sum }} ريال</p>
                                 </td>
                                 <td class="cart_delete">
-                                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                                    <a class="cart_quantity_delete" href="/remove-order-detail/{{ det.id }}"><i
+                                            class="fa fa-times"></i></a>
                                 </td>
                             </tr>
                         {% endfor %}

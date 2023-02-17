@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from eshop_order.forms import UserNewOrderForm
-from eshop_order.models import Order
+from eshop_order.models import Order, OrderDetail
 from eshop_products.models import Product
 
 
@@ -41,3 +41,14 @@ def user_open_order(request):
         context['order'] = order_open
         context['detail'] = order_open.orderdetail_set.all()
     return render(request, 'order/user_open_order.html', context)
+
+
+@login_required(login_url='/login')
+def remove_order_detail(request, *args, **kwargs):
+    detail_id = kwargs.get('detail_id')
+    if detail_id is not None:
+        order_detail = OrderDetail.objects.get_queryset().get(id=detail_id)
+        if order_detail is not None:
+            order_detail.delete()
+
+    return redirect('/open-order')

@@ -50,7 +50,7 @@ def my_grouper(n, iterable):
 def product_detail(request, *args, **kwargs):
     product_id = kwargs['productId']
 
-    new_order_form = UserNewOrderForm(request.POST or None, initial={'product_id': product_id})
+    new_order_form = UserNewOrderForm(request.POST or None, initial={'product_id': product_id })
 
     product = Product.objects.get_by_id(product_id)
 

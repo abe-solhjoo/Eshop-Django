@@ -72,14 +72,20 @@ def edit_user_profile(request):
     if user is None:
         raise Http404()
 
-    edit_user_form = EditUserForm(request.POST or None,
-                                  initial={'first_name': user.first_name, 'last_name': user.last_name})
+    edit_user_form = EditUserForm(
+        request.POST or None,
+        initial={'first_name': user.first_name,
+                 'last_name': user.last_name,
+                 'email': user.email}
+    )
     if edit_user_form.is_valid():
         first_name = edit_user_form.cleaned_data.get('first_name')
         last_name = edit_user_form.cleaned_data.get('last_name')
+        email = edit_user_form.cleaned_data.get('email')
 
         user.first_name = first_name
         user.last_name = last_name
+        user.email = email
         user.save()
 
     context = {

@@ -12,6 +12,11 @@ class EditUserForm(forms.Form):
         widget=forms.TextInput(attrs={'placeholder': 'لطفا نام خانوادگی خود را وارد نمایید', 'class': 'form-control'}),
         label='نام خانوادگی'
     )
+    email = forms.CharField(
+        widget=forms.EmailInput(attrs={'placeholder': 'لطفا ایمیل خود را وارد نمایید', 'class': 'form-control'}),
+        label='ایمیل'
+    )
+
 
 
 class LoginForm(forms.Form):

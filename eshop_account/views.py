@@ -62,7 +62,15 @@ def log_out(request):
 
 @login_required(login_url='/login')
 def user_account_main_page(request):
-    return render(request, 'account/user_account_main.html', {})
+    user_id = request.user.id
+    user = User.objects.get(id=user_id)
+    if user is None:
+        raise Http404()
+
+    context = {
+        'user': user
+    }
+    return render(request, 'account/user_account_main.html', context)
 
 
 @login_required(login_url='/login')

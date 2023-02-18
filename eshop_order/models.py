@@ -10,6 +10,12 @@ class Order(models.Model):
     is_paid = models.BooleanField(verbose_name='پرداخت شده')
     payment_date = models.DateTimeField(blank=True, null=True, verbose_name='تاریخ پرداخت')
 
+    def get_total_price(self):
+        amount = 0
+        for detail in self.orderdetail_set.all():
+            amount += detail.price * detail.count
+        return amount
+
     class Meta:
         verbose_name = 'سبد خرید'
         verbose_name_plural = 'سبد های خرید'
@@ -33,5 +39,3 @@ class OrderDetail(models.Model):
 
     def __str__(self):
         return self.product.title
-
-

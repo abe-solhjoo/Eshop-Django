@@ -34,12 +34,14 @@ def user_open_order(request):
     context = {
         'order': None,
         'detail': None,
+        'total': 0,
     }
     order_open = Order.objects.filter(owner_id=request.user.id, is_paid=False).first()
 
     if order_open is not None:
         context['order'] = order_open
         context['detail'] = order_open.orderdetail_set.all()
+        context['total'] = order_open.get_total_price()
     return render(request, 'order/user_open_order.html', context)
 
 
